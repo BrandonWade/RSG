@@ -2,8 +2,6 @@ package rsg.processing;
 
 import java.util.ArrayList;
 
-import org.eclipse.swt.graphics.Image;
-
 import acceptanceTests.EventLoop;
 import rsg.objects.Direction;
 import rsg.objects.GameCharacter;
@@ -68,108 +66,7 @@ public class GameRunner
 		GuiWindow.updateGameOutput("Welcome to the world of RSG. Your COMP3350 assignment is due today! I hope you can get it handed in on time...");
 		
 		GuiWindow.drawMap(World.getSetSuperMap(4, 1));
-		
-		new Thread(new Runnable()
-		{
-			public void run()
-			{
-				while (true)
-				{
-					for (int i = 0; i < World.getCurrentMap().getTile(GamePlayer.getX(), GamePlayer.getY()).getList().size(); i++)
-					{
-						GuiWindow.drawImage(World.getCurrentMap().getTile(GamePlayer.getX(), GamePlayer.getY()).getList().get(i).getImage(), GamePlayer.getX(), GamePlayer.getY());
-					}
-					
-					GuiWindow.drawImage(GamePlayer.getImage(), GamePlayer.getX(), GamePlayer.getY());
-					
-					try
-					{
-						Thread.sleep(25);
-					}
-					catch (InterruptedException e)
-					{
-						e.printStackTrace();
-					}
-				}
-			}
-		}).start();
-		
-		new Thread(new Runnable()
-		{
-			public void run()
-			{
-				Direction oldDirection = GamePlayer.getPlayerDirection();
-				Image northFrame1 = WorldInfo.search("MC02").getImage();
-				Image northFrame2 = WorldInfo.search("MC06").getImage();
-				Image southFrame1 = WorldInfo.search("MC04").getImage();
-				Image southFrame2 = WorldInfo.search("MC08").getImage();
-				
-				while (true)
-				{
-					if (oldDirection == GamePlayer.getPlayerDirection())
-					{
-						switch (GamePlayer.getPlayerDirection())
-						{
-							case North:
-								GamePlayer.setImage(northFrame1);
-								
-								try
-								{
-									Thread.sleep(500);
-								}
-								catch (InterruptedException e)
-								{
-									e.printStackTrace();
-								}
-								
-								GamePlayer.setImage(northFrame2);
-								
-								try
-								{
-									Thread.sleep(500);
-								}
-								catch (InterruptedException e)
-								{
-									e.printStackTrace();
-								}
-								break;
-							case South:
-								GamePlayer.setImage(southFrame1);
-								
-								try
-								{
-									Thread.sleep(500);
-								}
-								catch (InterruptedException e)
-								{
-									e.printStackTrace();
-								}
-								
-								GamePlayer.setImage(southFrame2);
-								
-								try
-								{
-									Thread.sleep(500);
-								}
-								catch (InterruptedException e)
-								{
-									e.printStackTrace();
-								}
-								break;
-							case West:
-								break;
-							case East:
-								break;
-							default:
-								break;
-						}
-					}
-					
-					oldDirection = GamePlayer.getPlayerDirection();
-				}
-			}
-		}).start();
-		
+		GuiWindow.drawImage(GamePlayer.getImage(), GamePlayer.getX(), GamePlayer.getY());
 		GuiWindow.drawMiniMap();
 		
 		GameVehicle defaultVehicle = GamePlayer.getDefaultVehicle();
@@ -304,9 +201,9 @@ public class GameRunner
 			{
 				if(sailableTile)
 				{
-					//GuiWindow.drawImage(GamePlayer.getPlayerBoat().getImage(), oldX, oldY);
+					GuiWindow.drawImage(GamePlayer.getPlayerBoat().getImage(), oldX, oldY);
 				}
-				//GuiWindow.drawImage(GamePlayer.getImage(), oldX, oldY);
+				GuiWindow.drawImage(GamePlayer.getImage(), oldX, oldY);
 				playerDrawn = true;
 			}
 			
@@ -320,9 +217,9 @@ public class GameRunner
 		{
 			if(sailableTile)
 			{
-				//GuiWindow.drawImage(GamePlayer.getPlayerBoat().getImage(), oldX, oldY);
+				GuiWindow.drawImage(GamePlayer.getPlayerBoat().getImage(), oldX, oldY);
 			}
-			//GuiWindow.drawImage(GamePlayer.getImage(), oldX, oldY);
+			GuiWindow.drawImage(GamePlayer.getImage(), oldX, oldY);
 		}
 	}
 
@@ -416,7 +313,7 @@ public class GameRunner
 			World.removeItem(interactX, interactY);
 			for (int i = 0; i < tileList.size(); i++)
 			{
-				//GuiWindow.drawImage(tileList.get(i).getImage(), interactX, interactY);
+				GuiWindow.drawImage(tileList.get(i).getImage(), interactX, interactY);
 			}
 		}
 	}
@@ -578,15 +475,15 @@ public class GameRunner
 			imageList = World.getTileImages(x, y);
 			for (int i = 0; i < imageList.size(); i++)
 			{
-				//GuiWindow.drawImage(imageList.get(i).getImage(), x, y);
+				GuiWindow.drawImage(imageList.get(i).getImage(), x, y);
 			}
-			//GuiWindow.drawImage(Projectile.getImage(), newX, newY);
+			GuiWindow.drawImage(Projectile.getImage(), newX, newY);
 			Projectile.setPosition(newX, newY);
 			
 			if (x == GamePlayer.getX() && y == GamePlayer.getY())
 			{
 				//Redraw the player.
-				//GuiWindow.drawImage(GamePlayer.getImage(), x, y);
+				GuiWindow.drawImage(GamePlayer.getImage(), x, y);
 			}
 		}
 		
@@ -596,7 +493,7 @@ public class GameRunner
 			imageList = World.getTileImages(x, y);
 			for (int i = 0; i < imageList.size(); i++)
 			{
-				//GuiWindow.drawImage(imageList.get(i).getImage(), x, y);
+				GuiWindow.drawImage(imageList.get(i).getImage(), x, y);
 			}
 			result = false;
 		}

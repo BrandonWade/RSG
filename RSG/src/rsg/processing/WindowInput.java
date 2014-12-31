@@ -16,7 +16,7 @@ public class WindowInput
 			unfreezeInput();
 			unlockKey = null;
 			GuiWindow.drawMap(World.getCurrentMap());
-			//GuiWindow.drawImage(GamePlayer.getImage(), GamePlayer.getX(), GamePlayer.getY());
+			GuiWindow.drawImage(GamePlayer.getImage(), GamePlayer.getX(), GamePlayer.getY());
 		}
 		
 		if (acceptInput)

@@ -63,7 +63,7 @@ public class BattleRunner
 			tileList = World.getTileImages(enemyX, enemyY);
 			for (int i = 0; i < tileList.size(); i++)
 			{
-				//GuiWindow.drawImage(tileList.get(i).getImage(), enemyX, enemyY);
+				GuiWindow.drawImage(tileList.get(i).getImage(), enemyX, enemyY);
 			}
 		}
 		

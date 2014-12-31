@@ -51,7 +51,7 @@ public abstract class StoryManager
 		
 		if (story.getCurrGoalDesc() == Story.endText)
 		{
-			//GuiWindow.drawImage(WorldInfo.gameWinScreen, 0, 0);
+			GuiWindow.drawImage(WorldInfo.gameWinScreen, 0, 0);
 			WindowInput.freezeInput();
 			WindowInput.unfreezeOnKey(KeyCode.KeySpace);
 			GuiWindow.removeLastItem();

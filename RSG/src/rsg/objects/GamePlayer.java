@@ -181,9 +181,4 @@ public class GamePlayer
 	{
 		return player.getPlayerVehicle();
 	}
-	
-	public static void setImage(Image newImage)
-	{
-		player.setImage(newImage);
-	}
 }

@@ -265,7 +265,7 @@ public class GuiWindow implements ActionListener
 				miniMapCanvas.redraw();
 			}
 	    });
-	    /*
+	    
 	    gridCanvas.addPaintListener(new PaintListener()
 	    {
 	    	public void paintControl(PaintEvent e)
@@ -274,7 +274,7 @@ public class GuiWindow implements ActionListener
 	    		drawImage(GamePlayer.getImage(), GamePlayer.getX(), GamePlayer.getY());
 	        }
 	    });
-	    */
+	    
 	    miniMapCanvas.addPaintListener(new PaintListener()
 	    {
 	    	public void paintControl(PaintEvent e)
@@ -518,41 +518,35 @@ public class GuiWindow implements ActionListener
 	}
 	
 	public static void drawMiniMap()
-	{
-		OurDisplay.getDisplay().syncExec(new Runnable()
+	{	
+		Map gameMap = null;
+		Image mapIcon;
+		
+		for (int i = 0; i < World.getMapXLength(); i++)
 		{
-			public void run()
+			for (int j = 0; j < World.getMapXLength(); j++)
 			{
-				Map gameMap = null;
-				Image mapIcon;
+				gameMap = World.getSuperMap(i, j);
 				
-				for (int i = 0; i < World.getMapXLength(); i++)
+				for (int k = 0; k < Map.getRows(); k++)
 				{
-					for (int j = 0; j < World.getMapXLength(); j++)
+					for (int l = 0; l < Map.getCols(); l++)
 					{
-						gameMap = World.getSuperMap(i, j);
-						
-						for (int k = 0; k < Map.getRows(); k++)
+						if (gameMap.getTileImages(k, l).get(gameMap.getTileImages(k, l).size() - 1) instanceof GameScenery)
 						{
-							for (int l = 0; l < Map.getCols(); l++)
-							{
-								if (gameMap.getTileImages(k, l).get(gameMap.getTileImages(k, l).size() - 1) instanceof GameScenery)
-								{
-									mapIcon = ((GameScenery)(gameMap.getTileImages(k, l).get(gameMap.getTileImages(k, l).size() - 1))).getMapTile();
-								}
-								else
-								{
-									mapIcon = ((GameScenery)(gameMap.getTileImages(k, l).get(gameMap.getTileImages(k, l).size() - 2))).getMapTile();
-								}
-								miniMapGC.drawImage(mapIcon, ((i * Map.getRows()) + k) * Map.MINIMAP_TILE_SIZE, ((j * Map.getCols()) + l) * Map.MINIMAP_TILE_SIZE);
-							}
+							mapIcon = ((GameScenery)(gameMap.getTileImages(k, l).get(gameMap.getTileImages(k, l).size() - 1))).getMapTile();
 						}
+						else
+						{
+							mapIcon = ((GameScenery)(gameMap.getTileImages(k, l).get(gameMap.getTileImages(k, l).size() - 2))).getMapTile();
+						}
+						miniMapGC.drawImage(mapIcon, ((i * Map.getRows()) + k) * Map.MINIMAP_TILE_SIZE, ((j * Map.getCols()) + l) * Map.MINIMAP_TILE_SIZE);
 					}
 				}
-				
-				drawMiniMapIndicator();
 			}
-		});
+		}
+		
+		drawMiniMapIndicator();
 	}
 	
 	private static void drawMiniMapIndicator()
@@ -590,7 +584,7 @@ public class GuiWindow implements ActionListener
 		drawMiniMapIndicator();
 	}
 	
-	private static void drawValidMiniMapIcon(final int drawX, final int drawY)
+	private static void drawValidMiniMapIcon(int drawX, int drawY)
 	{
 		int offsetX = World.getOldMapX();
 		int offsetY = World.getOldMapY();
@@ -609,40 +603,28 @@ public class GuiWindow implements ActionListener
 		miniMapGC.drawImage(mapIcon, (offsetX * Map.getRows()) + (drawX * Map.MINIMAP_TILE_SIZE), (offsetY * Map.getCols()) + (drawY * Map.MINIMAP_TILE_SIZE));
 	}
 	
-	public static void drawMap(final Map gameMap)
+	public static void drawMap(Map gameMap)
 	{
-		OurDisplay.getDisplay().syncExec(new Runnable()
+		ArrayList<GameObject> imageList = null;
+		
+		for (int i = 0; i < Map.getRows(); i++)
 		{
-			public void run()
+			for (int j = 0; j < Map.getCols(); j++)
 			{
-				ArrayList<GameObject> imageList = null;
-				
-				for (int i = 0; i < Map.getRows(); i++)
+				imageList = gameMap.getTileImages(i, j);
+				for(int k = 0; k < imageList.size(); k++)
 				{
-					for (int j = 0; j < Map.getCols(); j++)
-					{
-						imageList = gameMap.getTileImages(i, j);
-						for(int k = 0; k < imageList.size(); k++)
-						{
-							gridGC.drawImage(imageList.get(k).getImage(), i * Map.GAME_TILE_SIZE, j * Map.GAME_TILE_SIZE);
-						}
-					}
+					gridGC.drawImage(imageList.get(k).getImage(), i * Map.GAME_TILE_SIZE, j * Map.GAME_TILE_SIZE);
 				}
-				
-				removeMiniMapIndicator();
 			}
-		});
+		}
+		
+		removeMiniMapIndicator();
 	}
 
-	public static void drawImage(final Image image, final int xVal, final int yVal)
+	public static void drawImage(Image image, int xVal, int yVal)
 	{
-		OurDisplay.getDisplay().asyncExec(new Runnable()
-		{
-			public void run()
-			{
-				gridGC.drawImage(image, xVal * Map.GAME_TILE_SIZE, yVal * Map.GAME_TILE_SIZE);
-			}
-		});
+		gridGC.drawImage(image, xVal * Map.GAME_TILE_SIZE, yVal * Map.GAME_TILE_SIZE);
 	}
 	
 	public static boolean isDisposed()
