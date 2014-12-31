@@ -1,0 +1,41 @@
+//This test tests the characters stats , such as the name of the character is correct, the health and equipping weapons
+Package                 rsg.presentation
+
+InvokeMethod			rsg.processing.GameRunner	initializeGame	
+
+Set						WelcomeDialog				text 			"ATTest1"
+
+Click 					WelcomeDialog				btnOK
+
+InvokeMethod			GuiWindow					updateStats
+
+Test					GuiWindow					name_box		"ATTest1"
+
+Test					GuiWindow					health_box		"20"
+
+InvokeMethod			tests.AcceptanceTestHelper	testMap6
+
+SelectTableByRowIndex	GuiWindow					table 0
+
+Test					GuiWindow					game_output   	"Does this make me a member of star fleet?!"
+
+SelectTableByRowIndex	GuiWindow					weaponTable		0
+
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help1
+
+SelectTableByRowIndex	GuiWindow					table 1
+
+Test					GuiWindow					health_box		"30"
+
+InvokeMethod			rsg.services.Services		closeDataAccess
+
+Click					GuiWindow					btnQuit
+
+InvokeMethod			GuiWindow					destroy
+
+
+
+
+
+
+

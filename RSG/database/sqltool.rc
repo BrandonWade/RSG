@@ -1,0 +1,3 @@
+# A personal Memory-Only database.
+urlid SC
+url jdbc:hsqldb:SC

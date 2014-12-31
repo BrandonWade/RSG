@@ -1,0 +1,1 @@
+Contains version 1.1 of RSG (Retro Style Game), the Software Engineering 1 project for Group 2.

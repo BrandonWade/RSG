@@ -1,0 +1,5 @@
+4,4
+GR01 | GR01 |  GR01 |  GR01
+GR01 | GR01  |  GR01  |  GR01
+GR01 |  # |  GR01 |  GR01
+GR01 | GR01 | GR01 | GR01

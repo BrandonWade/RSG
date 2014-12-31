@@ -1,0 +1,33 @@
+Package                 rsg.presentation
+
+InvokeMethod			rsg.processing.GameRunner	initializeGame	
+
+Set						WelcomeDialog				text 			"ATTest2"
+
+Click 					WelcomeDialog				btnOK
+
+InvokeMethod			GuiWindow					updateStats
+Test					GuiWindow					goal_box		"If you are going to pull an all-nighter, you might want some coffee first."	
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help1
+Test					GuiWindow					goal_box		"Diamonds are a nerds best friend.. Wait.. That sounds wrong.."		
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help2
+Test					GuiWindow					goal_box		"I think I saw a floppy disc recently.. or maybe that was in 1994.."
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help3
+Test					GuiWindow					goal_box		"Quick! We need to find some whiteout in the bookstore."
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help4
+Test					GuiWindow					goal_box		"But seriously. I need some REAL whiteout..."
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help5
+Test					GuiWindow					goal_box		"Oh no.. my assignment is 721KB. I guess I need to find something else to store it on."
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help6
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help7	
+Test					GuiWindow					goal_box		"I need to find something to put my assignment in."
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help8
+Test					GuiWindow					goal_box		"Ok!! It's time to hand in my assignment!"
+InvokeMethod			tests.AcceptanceTestHelper	testRSG2Help9
+Test					GuiWindow					goal_box		"All goals completed!"
+Test					GuiWindow					game_output		"Riacob: It's about time you handed this assignment in!(Press Space To Continue)"
+InvokeMethod			rsg.services.Services		closeDataAccess
+
+Click					GuiWindow					btnQuit
+
+InvokeMethod			GuiWindow					destroy

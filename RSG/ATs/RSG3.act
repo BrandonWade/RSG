@@ -1,0 +1,61 @@
+Package                 rsg.presentation
+
+InvokeMethod			rsg.processing.GameRunner	initializeGame	
+
+Set						WelcomeDialog				text 			"ATTest3"
+
+Click 					WelcomeDialog				btnOK
+
+InvokeMethod			GuiWindow					updateStats
+
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help1
+Test					GuiWindow						game_output		"What a sweet Sony Viao!"
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help1a
+Test					GuiWindow						game_output		"I love this Mac, it is sooooo cool!"
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help1b
+Test					GuiWindow						game_output		"This is a super nice Toshiba computer!"
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help1c
+Test					GuiWindow						game_output		"A basic tile pattern floor."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help2
+Test					GuiWindow						game_output 	"Short green grass."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help3
+Test					GuiWindow						game_output 	"Better not step on a crack.."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help3a
+Test					GuiWindow						game_output		"This is a pretty neat blue car."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help3b
+Test					GuiWindow						game_output		"A sweet yellow car!"
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help3c
+Test					GuiWindow						game_output		"This red car is the best car EVER!"
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help3d
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help4
+Test					GuiWindow						game_output 	"An old tree."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help4a
+Test					GuiWindow						game_output		"Ouch! That hurt!"
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help4b
+Test					GuiWindow						game_output		"Better not step on a crack.."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help4c
+Test					GuiWindow						game_output		"This is a really nice road."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help5
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help6
+Test					GuiWindow						game_output 	"Plain old sand."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help6a
+Test					GuiWindow						game_output		"It provides light in the night."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help6b
+Test					GuiWindow						game_output		"I really wish I could swim..."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help6c
+Test					GuiWindow						game_output 	"Short green grass."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help7
+Test					GuiWindow						game_output 	"There's grass growing in this sand."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help8
+Test					GuiWindow						game_output 	"Just the body of the crane."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help9
+Test					GuiWindow						game_output 	"Better not step on a crack.."
+InvokeMethod			tests.AcceptanceTestHelper		testMap4Help10
+
+InvokeMethod			rsg.services.Services		closeDataAccess
+
+Click					GuiWindow					btnQuit
+
+InvokeMethod			GuiWindow					destroy
+
+
